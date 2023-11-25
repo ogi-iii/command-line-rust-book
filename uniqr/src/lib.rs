@@ -54,7 +54,7 @@ pub fn run(config: Config) -> MyResult<()> {
         _ => Box::new(stdout()),
     };
 
-    // mutableでなければコンパイルエラーになる: (外部から所有している)out_fileが可変であるため
+    // mutableでなければコンパイルエラーになる: (外部から所有している)out_fileの内容が(追記されるごとに)変化するため
     let mut write = |count: u64, text: &str| -> MyResult<()> {
         if count > 0 {
             if config.count {
